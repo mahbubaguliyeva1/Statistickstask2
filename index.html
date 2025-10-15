@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics & Cybersecurity: Unified Analysis Project</title>
+    <style>
+        /* Unified Professional Dark Theme CSS */
+        :root {
+            --primary-color: #3498db; /* Blue */
+            --secondary-color: #2c3e50; /* Dark Blue/Navy */
+            --accent-color: #e74c3c; /* Red */
+            --background-dark: #222;
+            --text-light: #ecf0f1;
+            --code-text: #f1c40f; /* Yellow for code/output */
+            --success-text: #2ecc71; /* Green for inputs/success */
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        h2 {
+            color: var(--text-light);
+            margin-top: 35px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+            font-weight: 500;
+        }
+        h3 {
+            color: var(--primary-color);
+            margin-top: 20px;
+            font-weight: 400;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 5px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #444;
+            margin: 30px 0;
+        }
+        pre {
+            background-color: #1a1a1a;
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            border: 1px solid var(--primary-color);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        /* Tables for SQL Results */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: #333;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+        /* Input/Text Areas for Cryptography */
+        textarea, input[type="number"], button {
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: var(--success-text); /* Green text for content */
+            resize: vertical;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+            text-transform: uppercase;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+        }
+        .results-box {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border: 1px solid var(--primary-color);
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--code-text);
+        }
+        #letterDistribution {
+            height: 300px;
+            overflow-y: scroll;
+        }
+        .key-input {
+            width: 70px;
+            text-align: center;
+            background-color: #333;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 8px;
+            margin-right: 15px;
+        }
+        .concept-list li {
+            margin-bottom: 10px;
+            list-style-type: square;
+            margin-left: 20px;
+        }
+        .author-info {
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 2px dashed #444;
+            font-style: italic;
+            color: #95a5a6;
+            text-align: right;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Statistics and Cybersecurity: Unified Analysis Project</h1>
+
+        <div id="statistics-section">
+            <h2>Part 1: Statistical Data Analysis (Task 2)</h2>
+
+            <h3>Foundational Concepts</h3>
+            <p>A **dataset** is a structured collection of data organized for processing. **Variables** are the pieces of information within the data. Analysis is classified by the number of variables:</p>
+            <ul class="concept-list">
+                <li>**Univariate Data:** Focuses on a **single variable** (e.g., the frequency of student ages).</li>
+                <li>**Bivariate Data:** Focuses on the **relationship between two variables** (e.g., gender vs. score).</li>
+                <li>**Multivariate Data:** Focuses on the **interactions among more than two variables** simultaneously.</li>
+            </ul>
+
+            <hr>
+
+            <h3>MySQL Implementation: Dataset Creation</h3>
+            <p>The following SQL script defines and populates the `students` table:</p>
+            <pre>
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    gender VARCHAR(10),
+    score INT
+);
+INSERT INTO students (id, name, age, gender, score) VALUES
+(1, 'Maria', 20, 'F', 85),
+(2, 'John', 22, 'M', 90),
+(3, 'Blake', 19, 'F', 78),
+(4, 'Martin', 21, 'M', 88);
+SELECT * FROM students;
+            </pre>
+
+            <table>
+                <thead><tr><th>id</th><th>name</th><th>age</th><th>gender</th><th>score</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Maria</td><td>20</td><td>F</td><td>85</td></tr>
+                    <tr><td>2</td><td>John</td><td>22</td><td>M</td><td>90</td></tr>
+                    <tr><td>3</td><td>Blake</td><td>19</td><td>F</td><td>78</td></tr>
+                    <tr><td>4</td><td>Martin</td><td>21</td><td>M</td><td>88</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Univariate Frequency & Central Tendency</h4>
+            <pre>
+-- Frequency by Gender (Univariate)
+SELECT gender, COUNT(*) AS frequency FROM students GROUP BY gender;
+
+-- Central Tendency (Univariate)
+SELECT AVG(score) AS average_score, MIN(score) AS min_score, MAX(score) AS max_score FROM students;
+            </pre>
+            
+            <table>
+                <thead><tr><th>gender</th><th>frequency</th><th>average_score</th><th>min_score</th><th>max_score</th></tr></thead>
+                <tbody>
+                    <tr><td>F</td><td>2</td><td>85.25</td><td>78</td><td>90</td></tr>
+                    <tr><td>M</td><td>2</td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+
+            <h4>Bivariate Analysis (Score by Gender)</h4>
+            <pre>
+SELECT gender, AVG(score) AS avg_score
+FROM students
+GROUP BY gender;
+            </pre>
+            <table>
+                <thead><tr><th>gender</th><th>avg_score</th></tr></thead>
+                <tbody>
+                    <tr><td>F</td><td>81.50</td></tr>
+                    <tr><td>M</td><td>89.00</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <div id="cryptography-section">
+            <h2>Part 2: Cryptography & Statistical Attack</h2>
+            <p>This tool performs encryption and statistical cryptanalysis (frequency attack) on the Caesar Cipher, demonstrating the link between statistics and cybersecurity.</p>
+
+            <h3>1. Input Text and Compute</h3>
+            <textarea id="inputText" rows="6" placeholder="Enter the plaintext for analysis and encryption..."></textarea>
+            <button onclick="processText()">Analyze Frequencies & Prepare Encryption</button>
+
+            <hr>
+
+            <h3>2. Distribution of the Letters (Statistical Analysis)</h3>
+            <p>The core statistical data needed for cryptanalysis:</p>
+            <div id="letterDistribution" class="results-box"></div>
+
+            <hr>
+
+            <h3>3. Apply Caesar Cipher (Encryption)</h3>
+            <label for="caesarKey">Cipher Key (Shift):</label>
+            <input type="number" id="caesarKey" class="key-input" value="3" min="1" max="25">
+            <button onclick="encryptText()">Encrypt Text</button>
+            
+            <h4>Encrypted Ciphertext:</h4>
+            <textarea id="encryptedText" rows="3" readonly placeholder="Encrypted result will appear here..."></textarea>
+            
+            <hr>
+
+            <h3>4. Decode the Encrypted Text (Known Key Decryption)</h3>
+            <p>Decryption using the known key for validation purposes:</p>
+            <button onclick="decryptByKey()">Decrypt (Known Key)</button>
+            
+            <h4>Decoded Text (Known Key):</h4>
+            <textarea id="decryptedByKey" rows="3" readonly placeholder="Decrypted result will appear here..."></textarea>
+
+            <hr>
+
+            <h3>5. Decode using the Language Distribution (Cryptanalysis)</h3>
+            <p>Statistical Attack: Decoding the message by estimating the key based on letter frequency distribution.</p>
+            <button onclick="decryptByFrequency()">Decode (Statistical Frequency Attack)</button>
+
+            <h4>Statistically Decoded Text:</h4>
+            <textarea id="decryptedByFrequency" rows="3" readonly placeholder="Result of statistical decryption will appear here..."></textarea>
+            
+            <div id="freqAnalysisResult" class="results-box"></div>
+        </div>
+
+        <div class="author-info">
+            Assignment submitted by **[Your First Name] [Your Surname]**.<br>
+            Student Major: **Cyber Security**.<br>
+            Project incorporates Statistics (Task 2) and Cryptography (Task 3).
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT LOGIC (Cipher and Statistics Functions)
+        let globalCiphertext = ""; 
+
+        /** Computes letter distribution (count and frequency) */
+        function getDistribution(text) {
+            const cleanText = text.toUpperCase().replace(/[^A-Z]/g, '');
+            const totalLetters = cleanText.length;
+            const counts = new Array(26).fill(0);
+
+            for (let i = 0; i < totalLetters; i++) {
+                const charCode = cleanText.charCodeAt(i) - 65;
+                if (charCode >= 0 && charCode < 26) {
+                    counts[charCode]++;
+                }
+            }
+
+            let output = "Total Letters: " + totalLetters + "\n";
+            let maxCount = 0;
+            let maxIndex = -1;
+
+            for (let i = 0; i < 26; i++) {
+                const letter = String.fromCharCode(65 + i);
+                const count = counts[i];
+                const freq = totalLetters > 0 ? ((count / totalLetters) * 100).toFixed(3) : 0;
+                
+                output += `${letter}: Count = ${count}, Frequency = ${freq}%\n`;
+
+                if (count > maxCount) {
+                    maxCount = count;
+                    maxIndex = i;
+                }
+            }
+            return { output, counts, maxIndex };
+        }
+
+        /** Applies Caesar Cipher */
+        function caesarCipher(text, key, decrypt = false) {
+            const shift = decrypt ? (26 - (key % 26)) : (key % 26);
+            let result = '';
+
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                let charCode = text.charCodeAt(i);
+
+                if (charCode >= 65 && charCode <= 90) { // Uppercase
+                    let newCode = ((charCode - 65 + shift) % 26) + 65;
+                    result += String.fromCharCode(newCode);
+                } else if (charCode >= 97 && charCode <= 122) { // Lowercase
+                    let newCode = ((charCode - 97 + shift) % 26) + 97;
+                    result += String.fromCharCode(newCode);
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        /** Decrypts based on statistical frequency analysis (Task 5) */
+        function statisticalDecryption(ciphertext) {
+            const { maxIndex: cipherMaxIndex } = getDistribution(ciphertext);
+            
+            // 'E' is the most frequent letter in English (Index 4)
+            const E_INDEX = 4; 
+            
+            // Key is the shift between the ciphertext's most frequent letter and 'E'
+            let estimatedKey = (cipherMaxIndex - E_INDEX + 26) % 26;
+
+            const decryptedText = caesarCipher(ciphertext, estimatedKey, true);
+
+            let keyOutput = `STATISTICAL ESTIMATION:\n`;
+            keyOutput += `1. Most frequent letter in Ciphertext: ${String.fromCharCode(65 + cipherMaxIndex)} (Index ${cipherMaxIndex})\n`;
+            keyOutput += `2. Assumed corresponding English letter (E): Index ${E_INDEX}\n`;
+            keyOutput += `3. Estimated Decryption Key (Shift): ${estimatedKey}\n`;
+            
+            return { decryptedText, keyOutput };
+        }
+
+        // --- Event Handlers ---
+        function processText() {
+            const inputText = document.getElementById('inputText').value;
+            const { output: distOutput } = getDistribution(inputText);
+            document.getElementById('letterDistribution').innerText = distOutput;
+            encryptText(); // Auto-encrypt
+        }
+
+        function encryptText() {
+            const inputText = document.getElementById('inputText').value;
+            const key = parseInt(document.getElementById('caesarKey').value);
+
+            if (!inputText || isNaN(key)) {
+                document.getElementById('encryptedText').value = "Error: Enter text and a valid key.";
+                return;
+            }
+
+            globalCiphertext = caesarCipher(inputText, key, false);
+            document.getElementById('encryptedText').value = globalCiphertext;
+        }
+
+        function decryptByKey() {
+            const key = parseInt(document.getElementById('caesarKey').value);
+
+            if (!globalCiphertext || isNaN(key)) {
+                document.getElementById('decryptedByKey').value = "Error: Encrypt text first and ensure the key is set.";
+                return;
+            }
+
+            const decryptedText = caesarCipher(globalCiphertext, key, true);
+            document.getElementById('decryptedByKey').value = decryptedText;
+        }
+
+        function decryptByFrequency() {
+            const ciphertext = document.getElementById('encryptedText').value;
+
+            if (!ciphertext) {
+                document.getElementById('decryptedByFrequency').value = "Error: Encrypt text first.";
+                return;
+            }
+            
+            const { decryptedText, keyOutput } = statisticalDecryption(ciphertext);
+            
+            document.getElementById('decryptedByFrequency').value = decryptedText;
+            document.getElementById('freqAnalysisResult').innerText = keyOutput;
+        }
+
+        // Initialize key on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('caesarKey').value = 3;
+        });
+    </script>
+</body>
+</html>
